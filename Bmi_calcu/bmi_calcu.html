@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title>BMI_CALCULATOR</title>
+    <link rel="stylesheet" href="bmi_calcu.css" />
+
+    <script language="JavaScript">
+      function calculateBmi() {
+        var weight = document.bmiForm.weight.value;
+        var height = document.bmiForm.height.value;
+        if (weight > 0 && height > 0) {
+          var finalBmi = weight / (((height / 100) * height) / 100);
+          document.bmiForm.bmi.value = finalBmi;
+          if (finalBmi < 18.5) {
+            document.bmiForm.meaning.value = "That you are too thin.";
+          }
+          if (finalBmi > 18.5 && finalBmi < 25) {
+            document.bmiForm.meaning.value = "That you are healthy.";
+          }
+          if (finalBmi > 25) {
+            document.bmiForm.meaning.value = "That you have overweight.";
+          }
+        } else {
+          alert("Please Fill in everything correctly");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="bmiForm">
+      Your Weight(kg):
+      <input
+        placeholder="weight"
+        type="text"
+        name="weight"
+        size="10"
+      /><br /><br />
+      Your Height(cm):
+      <input
+        placeholder="height"
+        type="text"
+        name="height"
+        size="10"
+      /><br /><br />
+      <input
+        class="btn btn-dark sbtn-md"
+        type="button"
+        value="Calculate BMI"
+        onClick="calculateBmi()"
+      /><br /><br /><br />
+      Your BMI: <input type="text" name="bmi" size="20" /><br /><br />
+      This Means: <input type="text" name="meaning" size="25" /><br /><br />
+      <input class="btn btn-dark btn-md" type="reset" value="Reset" />
+    </form>
+  </body>
+</html>
